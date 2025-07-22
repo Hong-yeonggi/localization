@@ -1,0 +1,9 @@
+[component_container_isolated-1] [INFO]: Setting pose (0.000000): 12.566 -1.300 -1.537- spot1
+[component_container_isolated-1] [INFO]: Setting pose (0.000000): 13.355 -41.919 3.124 - spot2
+[component_container_isolated-1] [INFO]: Setting pose (0.000000): -0.336 -41.621 -3.131 - spot3
+[component_container_isolated-1] [INFO]: Setting pose (0.000000): 0.245 -0.993 1.553 - spot4
+
+spot1: 실험실 복도
+spot2: 엘리베이터 복도
+spot3: 연구실 복도
+spot4: 화물 엘리베이터 및 쓰레기통 복도

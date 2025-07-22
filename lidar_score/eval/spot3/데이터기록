@@ -1,0 +1,30 @@
+스팟1(실험실 복도, 화물엘리베이터에 가까운 곳)
+- base: [INFO]: scan_1751513293.csv & PNG 저장  | MAE=0.0507
+[INFO]: scan_1751513451.csv & PNG 저장  | MAE=0.0413
+[INFO]: scan_1751513473.csv & PNG 저장  | MAE=0.0557
+[INFO]: scan_1751513495.csv & PNG 저장  | MAE=0.0478
+[INFO]: scan_1751513556.csv & PNG 저장  | MAE=0.0382
+[INFO]: scan_1751513633.csv & PNG 저장  | MAE=0.0489
+[INFO]: scan_1751513692.csv & PNG 저장  | MAE=0.0472
+[INFO]: scan_1751513714.csv & PNG 저장  | MAE=0.0622
+[INFO]: scan_1751513771.csv & PNG 저장  | MAE=0.0556
+[INFO]: scan_1751513797.csv & PNG 저장  | MAE=0.0677
+[INFO]: scan_1751515596.csv & PNG 저장  | MAE=0.0762
+
+스팟2(엘리베이터)
+- base: [INFO]: scan_1751518275.csv & PNG 저장  | MAE=0.1074
+[INFO]: scan_1751518612.csv & PNG 저장  | MAE=0.1087
+[INFO]: scan_1751518852.csv & PNG 저장  | MAE=0.1271
+[INFO]: scan_1751519124.csv & PNG 저장  | MAE=0.1213
+[INFO]: scan_1751519348.csv & PNG 저장  | MAE=0.1279
+[INFO]: scan_1751519558.csv & PNG 저장  | MAE=0.1304
+[INFO]: scan_1751519653.csv & PNG 저장  | MAE=0.1102
+
+스팟3(연구실 복도)
+-base: [INFO]: scan_1751525780.csv & PNG 저장  | MAE=0.0609
+[INFO]: scan_1751526187.csv & PNG 저장  | MAE=0.0829
+[INFO]: scan_1751526308.csv & PNG 저장  | MAE=0.0820
+[INFO]: scan_1751526562.csv & PNG 저장  | MAE=0.1048
+[INFO]: scan_1751526976.csv & PNG 저장  | MAE=0.0810
+
+
