@@ -50,23 +50,50 @@ def plot_single(csv_path, save_png=None):
 def plot_multiple(csv_paths, save_png=None):
     fig, ax = plt.subplots()
 
-    for p in csv_paths:
+    styles = [
+        {'color': 'black',
+         'linestyle': '--',
+         'linewidth':1.0,
+         'label': 'base'},
+        
+        {'color': 'orange',
+         'linewidth':1.5,
+         'linestyle': '-',
+         'label': 'AMCL'},
+        
+        {'color': 'cornflowerblue',
+         'linewidth':1.5,         
+         'linestyle': '-',
+         'label': 'score based AMCL'}
+    ]
+    for p , style in zip(csv_paths,styles):
         if not os.path.isfile(p):
-            print(f"[WARN] 파일 없음: {p}  → 건너뜀")
+            print(f"[WARN] 파일 없음: {p}")
             continue
         df = read_pose_csv(p)
-        ax.plot(df['x'].to_numpy(), df['y'].to_numpy(),
-                linestyle='--', linewidth=1.0,
-                label=os.path.basename(p))
-
+        ax.plot(
+            df['x'].to_numpy(),
+            df['y'].to_numpy(),
+            **style
+        )
     ax.set_xlabel('X [m]')
     ax.set_ylabel('Y [m]')
 
     # ax.set_aspect('equal', adjustable='datalim')
 
-    ax.set_xlim(0, 25)
-    #ax.set_ylim(-5,4)
-    ax.legend()
+    #ax.set_xlim(5, 20.0)
+    ax.set_ylim(-5,5)
+    labels = ['base', 'AMCL', 'Score based AMCL']
+    ax.legend(
+        labels,
+        fontsize = 11,
+        #title_fontsize = 13,
+        loc = 'best'
+        #frameon = True,
+        #shadow = True
+    )
+    #leg.get_frame().set_alpha(0.5)
+    
     ax.grid(True)
 
     if save_png:
@@ -78,21 +105,21 @@ def plot_multiple(csv_paths, save_png=None):
 
 if __name__ == '__main__':
     single_csv = os.path.expanduser(
-        '~/path/localization/amcl_logs/spot1/amcl_pose_spot1_base.csv')
+        '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_base.csv')
     plot_single(
         single_csv,
-        save_png=os.path.expanduser('~/path/localization/amcl_logs/spot1/base_spot1.png')
+        save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot4/base_spot4.png')
     )
 
     runs = [
         os.path.expanduser(
-            '~/path/localization/amcl_logs/spot1/amcl_pose_spot1_base.csv'),
+            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_base.csv'),
         os.path.expanduser(
-            '~/path/localization/amcl_logs/spot1/amcl_pose_spot1_exp2.csv'),
+            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_exp1.csv'),
         os.path.expanduser(
-            '~/path/localization/amcl_logs/spot1/amcl_pose_spot1_score_exp1.csv')
+            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_score_exp1.csv')
     ]
     plot_multiple(
         runs,
-        save_png=os.path.expanduser('~/path/localization/amcl_logs/spot1/compare_score.png')
+        save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot4/compare_score.png')
     )
