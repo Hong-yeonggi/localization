@@ -52,18 +52,18 @@ def plot_multiple(csv_paths, save_png=None):
 
     styles = [
         {'color': 'black',
-         'linestyle': '--',
+         'linestyle': 'o',
          'linewidth':1.0,
          'label': 'base'},
         
         {'color': 'orange',
          'linewidth':1.5,
-         'linestyle': '-',
+         'linestyle': 'o',
          'label': 'AMCL'},
         
         {'color': 'cornflowerblue',
          'linewidth':1.5,         
-         'linestyle': '-',
+         'linestyle': 'o',
          'label': 'score based AMCL'}
     ]
     for p , style in zip(csv_paths,styles):
@@ -81,8 +81,8 @@ def plot_multiple(csv_paths, save_png=None):
 
     # ax.set_aspect('equal', adjustable='datalim')
 
-    #ax.set_xlim(5, 20.0)
-    ax.set_ylim(-5,5)
+    ax.set_xlim(-5, 5)
+    #ax.set_ylim(-3,3)
     labels = ['base', 'AMCL', 'Score based AMCL']
     ax.legend(
         labels,
@@ -104,22 +104,22 @@ def plot_multiple(csv_paths, save_png=None):
 
 
 if __name__ == '__main__':
-    single_csv = os.path.expanduser(
-        '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_base.csv')
-    plot_single(
-        single_csv,
-        save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot4/base_spot4.png')
-    )
+    # single_csv = os.path.expanduser(
+    #     '~/score_based_localization/localization/amcl_logs/spot1/amcl_pose_spot1_base.csv')
+    # plot_single(
+    #     single_csv,
+    #     save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot3/base_spot1_scatter.png')
+    # )
 
     runs = [
         os.path.expanduser(
-            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_base.csv'),
+            '~/score_based_localization/localization/amcl_logs/spot1/amcl_pose_spot1_base.csv'),
         os.path.expanduser(
-            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_exp1.csv'),
+            '~/score_based_localization/localization/amcl_logs/spot1/amcl_pose_spot1_exp1.csv'),
         os.path.expanduser(
-            '~/score_based_localization/localization/amcl_logs/spot4/amcl_pose_spot4_score_exp1.csv')
+            '~/score_based_localization/localization/amcl_logs/spot1/amcl_pose_spot1_score_exp1.csv')
     ]
     plot_multiple(
         runs,
-        save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot4/compare_score.png')
+        save_png=os.path.expanduser('~/score_based_localization/localization/amcl_logs/spot1/compare_score_scatter.png')
     )
