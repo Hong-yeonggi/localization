@@ -174,7 +174,11 @@ python3 init.py
 ```
 python amcl_pose.py
 ```
-rosbag 실행
+터틀봇에서 rosbag 실행
 ```
 ros2 play rosbag2_2025_07_20-21_56_48
+```
+localization plot
+```
+python3 localization_plot.py
 ```
