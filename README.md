@@ -1,5 +1,5 @@
 # localization
-## 기존 navigation 실행
+## 1. 기존 navigation 실행
 ### nav2_params.yaml
 /home/yeonggi/score_based_localization/src/navigation2/nav2_bringup/params/nav2_params.yaml
 ```
@@ -50,8 +50,8 @@ ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True autostart:=False m
 ```
 ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz
 ```
-## score based navigation 실행 시 
-### 1. nav2_params.yaml 수정
+## 2. score based navigation 실행 시 
+### 2.1 nav2_params.yaml 수정
 /home/yeonggi/score_based_localization/src/navigation2/nav2_bringup/params/nav2_params.yaml
 
 do_beamskip: false 
@@ -103,12 +103,12 @@ amcl:
     z_short: 0.05
     scan_topic: static_scan
 ```
-### 2. Score prediction model 실행
+### 2.2 Score prediction model 실행
 /home/yeonggi/score_based_localization/lidar_score/unet/static_unet_plot_최종.py
 ```
 python3 static_unet_plot_최종.py
 ```
-### 3. navigation 실행
+### 2.3 navigation 실행
 ```
 ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True autostart:=False map:=$HOME/score_based_localization/5_floor.yaml
 ```    
@@ -116,3 +116,50 @@ ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True autostart:=False m
 ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz
 ```
 
+## 3. SCORE MODEL 데이터 가공
+/home/yeonggi/score_based_localization/lidar_score/데이터_생성
+### 3.1 rosbag 데이터 추출
+```
+python3 point.py
+```
+### 3.2 labeling
+slam 초기 위치를 도면 상에 마우스로 클릭
+```
+python3 coor_regr.py
+```
+### 3.3 labeling 확인
+```
+label_plot.py
+```
+## 4 SCORE prediction model
+/home/yeonggi/score_based_localization/lidar_score/unet
+
+모델 학습
+```
+python3 u_net_최종.py
+```
+data test 성능 확인
+```
+python3 label_plot_pred.py
+```
+
+모델 성능 확인, 터틀봇 전원 킨 후 실행
+```
+python3 static_unet_plot_최종.py
+```
+
+## localization 성능 평가
+/home/yeonggi/score_based_localization/localization
+
+### rosbag
+```
+rosbag2_2025_07_20-21_56_48 -spot1
+rosbag2_2025_07_21-21_47_01 -spot2
+rosbag2_2025_07_21-21_56_43 -spot3
+rosbag2_2025_07_21-22_05_09 -spot4
+
+spot1: 실험실 복도
+spot2: 엘리베이터 복도
+spot3: 연구실 복도
+spot4: 화물 엘리베이터 및 쓰레기통 복도
+```
