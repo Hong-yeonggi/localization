@@ -151,7 +151,7 @@ python3 static_unet_plot_최종.py
 ## localization 성능 평가
 /home/yeonggi/score_based_localization/localization
 
-### rosbag
+### rosbag 설명, bag.txt
 ```
 rosbag2_2025_07_20-21_56_48 -spot1
 rosbag2_2025_07_21-21_47_01 -spot2
@@ -162,4 +162,19 @@ spot1: 실험실 복도
 spot2: 엘리베이터 복도
 spot3: 연구실 복도
 spot4: 화물 엘리베이터 및 쓰레기통 복도
+```
+### localization 성능 평가 
+navigation 패키지 실행 시킨 후, 초기 위치 발행
+
+```
+각 spot의 초기위치.txt 참고해서 init.py 파일 수정 후 실행
+python3 init.py
+```
+위치 추정 토픽 수집
+```
+python amcl_pose.py
+```
+rosbag 실행
+```
+ros2 play rosbag2_2025_07_20-21_56_48
 ```
