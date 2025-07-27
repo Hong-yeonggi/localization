@@ -163,22 +163,22 @@ spot2: 엘리베이터 복도
 spot3: 연구실 복도
 spot4: 화물 엘리베이터 및 쓰레기통 복도
 ```
-### localization 성능 평가 
-navigation 패키지 실행 시킨 후, 초기 위치 발행
+### 5. localization 성능 평가 
+5.1 navigation 패키지 실행 시킨 후, 초기 위치 발행
 
 ```
 각 spot의 초기위치.txt 참고해서 init.py 파일 수정 후 실행
 python3 init.py
 ```
-위치 추정 토픽 수집
+5.2 위치 추정 토픽 수집
 ```
 python amcl_pose.py
 ```
-터틀봇에서 rosbag 실행
+5.3 터틀봇에서 rosbag 실행
 ```
 ros2 play rosbag2_2025_07_20-21_56_48
 ```
-localization plot
+5.4 localization plot
 ```
 python3 localization_plot.py
 ```
